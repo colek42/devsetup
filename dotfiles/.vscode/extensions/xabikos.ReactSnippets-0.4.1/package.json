@@ -1,0 +1,73 @@
+{
+	"__metadata": {
+		"galleryApiUrl": "https://marketplace.visualstudio.com/_apis/public/gallery",
+		"id": "c807e072-5951-4a01-9542-450f946c7ec1",
+		"publisherId": "8961c3fe-3ec6-429d-886a-50b5af362a88",
+		"publisherDisplayName": "charalampos karypidis",
+		"installCount": 8182,
+		"versions": [
+			{
+				"version": "0.4.1",
+				"date": "2016-04-10T11:52:41.73Z",
+				"downloadUrl": "https://xabikos.gallery.vsassets.io/_apis/public/gallery/publisher/xabikos/extension/ReactSnippets/0.4.1/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage?install=true",
+				"manifestUrl": "https://xabikos.gallery.vsassets.io/_apis/public/gallery/publisher/xabikos/extension/ReactSnippets/0.4.1/assetbyname/Microsoft.VisualStudio.Code.Manifest"
+			},
+			{
+				"version": "0.4.0",
+				"date": "2016-03-14T20:30:37.48Z",
+				"downloadUrl": "https://xabikos.gallery.vsassets.io/_apis/public/gallery/publisher/xabikos/extension/ReactSnippets/0.4.0/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage?install=true",
+				"manifestUrl": "https://xabikos.gallery.vsassets.io/_apis/public/gallery/publisher/xabikos/extension/ReactSnippets/0.4.0/assetbyname/Microsoft.VisualStudio.Code.Manifest"
+			},
+			{
+				"version": "0.3.0",
+				"date": "2016-03-09T19:36:44.5Z",
+				"downloadUrl": "https://xabikos.gallery.vsassets.io/_apis/public/gallery/publisher/xabikos/extension/ReactSnippets/0.3.0/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage?install=true",
+				"manifestUrl": "https://xabikos.gallery.vsassets.io/_apis/public/gallery/publisher/xabikos/extension/ReactSnippets/0.3.0/assetbyname/Microsoft.VisualStudio.Code.Manifest"
+			},
+			{
+				"version": "0.2.0",
+				"date": "2016-01-17T12:32:23.65Z",
+				"downloadUrl": "https://xabikos.gallery.vsassets.io/_apis/public/gallery/publisher/xabikos/extension/ReactSnippets/0.2.0/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage?install=true",
+				"manifestUrl": "https://xabikos.gallery.vsassets.io/_apis/public/gallery/publisher/xabikos/extension/ReactSnippets/0.2.0/assetbyname/Microsoft.VisualStudio.Code.Manifest"
+			},
+			{
+				"version": "0.1.0",
+				"date": "2015-11-17T20:54:33.097Z",
+				"downloadUrl": "https://xabikos.gallery.vsassets.io/_apis/public/gallery/publisher/xabikos/extension/ReactSnippets/0.1.0/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage?install=true",
+				"manifestUrl": "https://xabikos.gallery.vsassets.io/_apis/public/gallery/publisher/xabikos/extension/ReactSnippets/0.1.0/assetbyname/Microsoft.VisualStudio.Code.Manifest"
+			}
+		]
+	},
+	"name": "ReactSnippets",
+	"description": "Code snippets for Reactjs development in ES6 syntax",
+	"version": "0.4.1",
+	"displayName": "Reactjs code snippets",
+	"publisher": "xabikos",
+	"icon": "images/react.png",
+	"galleryBanner": {
+		"theme": "light"
+	},
+	"license": "SEE LICENSE IN LICENSE.md",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/xabikos/vscode-react"
+	},
+	"engines": {
+		"vscode": "0.10.x"
+	},
+	"categories": [
+		"Snippets"
+	],
+	"contributes": {
+		"snippets": [
+			{
+				"language": "javascriptreact",
+				"path": "./snippets/snippets.json"
+			},
+			{
+				"language": "javascript",
+				"path": "./snippets/snippets.json"
+			}
+		]
+	}
+}
