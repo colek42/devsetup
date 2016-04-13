@@ -11,3 +11,4 @@ go get -u -v golang.org/x/tools/cmd/guru
 sudo apt-get -y update
 sudo apt-get -y install nodejs
 sudo apt-get -y install npm
+sudo apt-get -y install nodejs-legacy

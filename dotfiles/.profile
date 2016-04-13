@@ -23,3 +23,4 @@ fi
 # Ubuntu make installation of Ubuntu Make binary symlink
 PATH=/home/cole/.local/share/umake/bin:$PATH
 
+GOPATH=/home/cole/go
