@@ -11,6 +11,8 @@ export GITVER=2.8.1
 export CMDVER=6.1.2
 export GOPATH=$HOME/go
 export NOVAHOME=$GOPATH/src/github.com/Novetta
+export GIT_NAME="Cole Kennedy"
+export GIT_EMAIL="nkennedy@novetta.com"
 
 sudo yum -y install epel-release
 sudo yum -y install epel-release.noarch
@@ -20,12 +22,12 @@ sudo yum -y upgrade
 echo "Installing zsh"
 sudo yum -y install zsh
 wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
-chsh -s /usr/bin/zsh
+chsh -s /bin/zsh
 
 echo "Installing golang"
 cd $HOME/Downloads
 wget "https://storage.googleapis.com/golang/go$GOVER.$OS-$ARCH.tar.gz"
-tar -C /usr/local -xzf go$VER.$OS-$ARCH.tar.gz
+sudo tar -C /usr/local -xzf go$GOVER.$OS-$ARCH.tar.gz
 echo "export GOPATH=$GOPATH" | tee -a $HOME/.env
 source $HOME/.env
 cd $HOME
@@ -90,15 +92,15 @@ read GITHUB_TOKEN
 echo "You entered: $GITHUB_TOKEN"
 
 git config --global url."https://${GITHUB_TOKEN}:x-oauth-basic@github.com/".insteadOf "https://github.com/"
-git config --global user.name "Cole Kennedy"
-git config --global user.email colek42@gmail.com
-git config --global init.templatedir '$HOME/.git-templates'
+git config --global user.name $GIT_NAME
+git config --global user.email $GIT_EMAIL
+git config --global init.templatedir '~/.git-templates'
 
 echo "Install i3"
 sudo touch /etc/yum.repos.d/admiralnemo-i3wm-el7-epel-7.repo
 echo "[admiralnemo-i3wm-el7]" | sudo tee -a /etc/yum.repos.d/admiralnemo-i3wm-el7-epel-7.repo
 echo "name=Copr repo for i3wm-el7 owned by admiralnemo" | sudo tee -a /etc/yum.repos.d/admiralnemo-i3wm-el7-epel-7.repo
-echo "baseurl=https://copr-be.cloud.fedoraproject.org/results/admiralnemo/i3wm-el7/epel-7-$basearch/" | sudo tee -a /etc/yum.repos.d/admiralnemo-i3wm-el7-epel-7.repo
+echo "baseurl=https://copr-be.cloud.fedoraproject.org/results/admiralnemo/i3wm-el7/epel-7-x86_64/" | sudo tee -a /etc/yum.repos.d/admiralnemo-i3wm-el7-epel-7.repo
 echo "skip_if_unavailable=True" | sudo tee -a /etc/yum.repos.d/admiralnemo-i3wm-el7-epel-7.repo
 echo "gpgcheck=1" | sudo tee -a /etc/yum.repos.d/admiralnemo-i3wm-el7-epel-7.repo
 echo "gpgkey=https://copr-be.cloud.fedoraproject.org/results/admiralnemo/i3wm-el7/pubkey.gpg" | sudo tee -a /etc/yum.repos.d/admiralnemo-i3wm-el7-epel-7.repo
@@ -168,5 +170,7 @@ chmod +x SenchaCmd-$CMDVER*
 echo "export PATH=$PATH:/home/cole/bin/Sencha/Cmd" | tee -a $HOME/.env
 source $HOME/.env
 cd $HOME
+
+sudo yum install -y ack tmux
 
 echo "Done!  Please Restart!"

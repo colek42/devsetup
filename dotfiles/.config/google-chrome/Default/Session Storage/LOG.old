@@ -1,0 +1,27 @@
+2016/04/16-03:09:29.333 7197 Reusing MANIFEST /home/cole/.config/google-chrome/Default/Session Storage/MANIFEST-000001
+2016/04/16-03:09:29.333 7197 Recovering log #8
+2016/04/16-03:09:29.333 7197 Reusing old log /home/cole/.config/google-chrome/Default/Session Storage/000008.log 
+2016/04/16-03:12:45.676 8704 Level-0 table #12: started
+2016/04/16-03:12:45.683 8704 Level-0 table #12: 29217 bytes OK
+2016/04/16-03:12:45.685 8704 Delete type=0 #8
+2016/04/16-03:25:21.334 8704 Level-0 table #14: started
+2016/04/16-03:25:21.342 8704 Level-0 table #14: 71187 bytes OK
+2016/04/16-03:25:21.344 8704 Delete type=0 #11
+2016/04/16-03:25:40.662 8704 Level-0 table #16: started
+2016/04/16-03:25:40.670 8704 Level-0 table #16: 56201 bytes OK
+2016/04/16-03:25:40.672 8704 Delete type=0 #13
+2016/04/16-03:25:40.673 8704 Compacting 4@0 + 1@1 files
+2016/04/16-03:25:40.686 8704 Generated table #17: 187 keys, 155901 bytes
+2016/04/16-03:25:40.686 8704 Compacted 4@0 + 1@1 files => 155901 bytes
+2016/04/16-03:25:40.688 8704 compacted to: files[ 0 1 1 0 0 0 0 ]
+2016/04/16-03:25:40.688 8704 Delete type=2 #7
+2016/04/16-03:25:40.688 8704 Delete type=2 #9
+2016/04/16-03:25:40.688 8704 Delete type=2 #12
+2016/04/16-03:25:40.688 8704 Delete type=2 #14
+2016/04/16-03:25:40.688 8704 Delete type=2 #16
+2016/04/16-03:26:45.573 8704 Level-0 table #19: started
+2016/04/16-03:26:45.579 8704 Level-0 table #19: 30797 bytes OK
+2016/04/16-03:26:45.582 8704 Delete type=0 #15
+2016/04/16-03:28:24.978 8704 Level-0 table #21: started
+2016/04/16-03:28:24.984 8704 Level-0 table #21: 26934 bytes OK
+2016/04/16-03:28:24.986 8704 Delete type=0 #18

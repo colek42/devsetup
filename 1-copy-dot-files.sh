@@ -8,4 +8,5 @@ ln -s ${BASEDIR}/dotfiles/.zshrc ~/.zshrc
 ln -s ${BASEDIR}/dotfiles/.env ~/.env
 ln -s ${BASEDIR}/dotfiles/.vscode ~/
 ln -s ${BASEDIR}/dotfiles/.git-templates ~/
-
+ln -s ${BASEDIR}/dotfiles/.i3 ~/
+ln -s ${BASEDIR}/dotfiles/.config ~/
