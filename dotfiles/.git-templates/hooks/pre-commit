@@ -1,0 +1,74 @@
+#!/bin/sh
+#symlink this to ROOT/.git/hooks/ or ~/.git-templates/hooks and run>> git config --global init.templatedir '~/.git-templates'  
+
+#you can change this to pre-push by changing the file name of the symlink
+
+echo "Running JS Beautify, removing new lines at end of file, and making sure js files have 0644 permissions"
+
+BASEDIR=$(git rev-parse --show-toplevel)
+
+files=$(git diff --cached --name-only --diff-filter=ACM | grep '.js$')
+
+for file in $files; do
+  js-beautify -n -r "${BASEDIR}/${file}"
+  eslint -c $HOME/.eslintrc.jso --fix "${BASEDIR}/${file}"
+  chmod 644 "${BASEDIR}/${file}"
+  git add "${BASEDIR}/${file}"
+done
+
+
+echo "Running gofmt and golint, and making sure js files have 0644 permissions"
+files=$(git diff --cached --name-only --diff-filter=ACM | grep '.go$')
+
+for file in $files; do
+  gofmt "${BASEDIR}/${file}"
+  golint "${BASEDIR}/${file}"
+  chmod 644 "${BASEDIR}/${file}"
+  git add "${BASEDIR}/${file}"
+done
+
+echo "Validating js with JSHint before commit"
+
+files=$(git diff --cached --name-only --diff-filter=ACMR -- *.js **/*.js)
+pass=true
+
+
+if [ "$files" != "" ]; then
+    for file in ${files}; do
+        result=$(jshint ${file})
+
+        if [ "$result" != "" ]; then
+            echo "$result"
+            echo "\n"
+            pass=false
+        fi
+    done
+fi
+
+
+echo "Validating go with govet before commit"
+
+files=$(git diff --cached --name-only --diff-filter=ACMR -- *.go **/*.go)
+pass=true
+
+
+if [ "$files" != "" ]; then
+    for file in ${files}; do
+        result=$(go tool vet -v ${file})
+
+        if [ "$result" != "" ]; then
+            echo "$result"
+            echo "\n"
+            pass=false
+        fi
+    done
+fi
+
+if $pass; then
+    exit 0
+else
+    echo ""
+    echo "COMMIT FAILED:"
+    echo "Some JavaScript/Go files are invalid. Please fix errors and try committing again."
+    exit 1
+fi

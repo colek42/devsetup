@@ -83,6 +83,6 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-export GOPATH=$HOME/go
+source ~/.env
 
 [ -s "/home/cole/.scm_breeze/scm_breeze.sh" ] && source "/home/cole/.scm_breeze/scm_breeze.sh"
