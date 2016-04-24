@@ -3,7 +3,6 @@
 #TODO Silent Sencha Cmd Install
 #TODO Do git stuff first
 
-##Vars for golang install
 export GOVER=1.6.1
 export OS=linux
 export ARCH=amd64
@@ -14,13 +13,129 @@ export NOVAHOME=$GOPATH/src/github.com/Novetta
 export GIT_NAME="Cole Kennedy"
 export GIT_EMAIL="nkennedy@novetta.com"
 
+NOVA_REPOS="VideoEnterprise
+pwcop
+namegen
+SSE
+KLE
+goldap
+GoSearchService
+gmf
+perseus
+aide
+gokerb
+gocql
+kerbproxy
+asn1"
+# fbncjs
+# Geoserver
+# ITK
+# cesium-drawhelper
+# ExecutiveDashboard
+# tirs
+# WebChimeraPlayer
+
+GOLANG_REPOS="github.com/nsf/gocode
+github.com/rogpeppe/godef
+github.com/golang/lint/golint
+github.com/lukehoban/go-outline
+sourcegraph.com/sqs/goreturns
+golang.org/x/tools/cmd/gorename
+github.com/tpng/gopkgs
+github.com/newhook/go-symbols
+golang.org/x/tools/cmd/guru
+golang.org/x/net/ipv4
+golang.org/x/net/internal/iana
+golang.org/x/net
+golang.org/x/net/websocket
+golang.org/x/crypto/md4
+github.com/fatih/set
+github.com/go-martini/martini
+github.com/codegangsta/inject
+github.com/martini-contrib/encoder
+github.com/martini-contrib/gzip
+github.com/gocql/gocql
+github.com/golang/snappy
+github.com/hailocab/go-hostpool
+golang.org/x/net/context
+github.com/codegangsta/inject
+github.com/go-martini/martini
+github.com/martini-contrib/encoder
+github.com/martini-contrib/gzip
+github.com/gocql/gocql/internal/lru
+github.com/gocql/gocql/internal/murmur
+github.com/gocql/gocql/internal/streams
+github.com/golang/snappy
+github.com/hailocab/go-hostpool
+golang.org/x/net/context
+gopkg.in/inf.v0
+github.com/gocql/gocql
+gopkg.in/yaml.v2
+github.com/Novetta/common/aide/websocket
+github.com/the42/cartconvert/cartconvert
+github.com/Novetta/common/mgrs
+github.com/TomiHiltunen/geohash-golang
+golang.org/x/image/bmp
+golang.org/x/image/tiff/lzw
+golang.org/x/image/tiff
+github.com/disintegration/imaging
+github.com/grafov/m3u8
+github.com/nfnt/resize
+github.com/oliamb/cutter
+"
+
+NPM_REPOS="jshint
+eslint
+js-beautify"
+
+RPMS="
+zsh
+curl-devel
+expat-devel
+gettext-devel
+openssl-devel
+zlib-devel
+gcc
+perl-ExtUtils-MakeMaker
+git
+xclip
+ack
+tmux
+zeromq
+zeromq-devel
+autoconf
+automake
+cmake
+freetype-devel
+gcc-c++
+git
+libtool
+make
+mercurial
+nasm
+yasm
+pkgconfig
+zlib-devel
+"
+
+#########################################################################
+#########################################################################
+
 sudo yum -y install epel-release
 sudo yum -y install epel-release.noarch
 sudo yum -y update
 sudo yum -y upgrade
 
+for rpm in $RPMS
+do
+    echo "Installing package $rpm"
+    sudo yum install -y $rpm
+
+done
+echo "done!"
+cd ~
+
 echo "Installing zsh"
-sudo yum -y install zsh
 wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
 chsh -s /bin/zsh
 
@@ -32,10 +147,7 @@ echo "export GOPATH=$GOPATH" | tee -a $HOME/.env
 source $HOME/.env
 cd $HOME
 
-echo "Installing latest Git"
-sudo yum install -y curl-devel expat-devel gettext-devel openssl-devel zlib-devel
-sudo yum install -y gcc perl-ExtUtils-MakeMaker git
-
+echo "Installing Git ver $GITVER"
 git clone git://git.kernel.org/pub/scm/git/git.git
 cd git
 make configure
@@ -76,13 +188,10 @@ echo "SSH Key Generation/GitHub Setup"
 ssh-keygen -t rsa -b 4096 -C "colek42@gmail.com" -f $HOME/.ssh/id_rsa -N ''
 eval "$(ssh-agent -s)"
 ssh-add $HOME/.ssh/id_rsa
-
-sudo yum install -y install xclip
 xclip -sel clip <  $HOME/.ssh/id_rsa.pub
 
 echo "public key in clipboard add to github, close chrome when key is added"
 google-chrome https://github.com/settings/keys
-
 
 echo "Adding github Token, close chrome after token is copied to clipboard"
 google-chrome https://github.com/settings/tokens/new
@@ -115,53 +224,62 @@ sudo yum install -y autoconf automake cmake freetype-devel gcc gcc-c++ git libto
 curl --silent --location https://rpm.nodesource.com/setup_5.x | sudo bash -
 sudo yum -y install nodejs
 
+#--Nova Repos--#
+
 mkdir -p $NOVAHOME
-cd $NOVAHOME
-git clone git@github.com:Novetta/VideoEnterprise --recursive
-git clone git@github.com:Novetta/pwcop --recursive
-git clone git@github.com:Novetta/fbncjs --recursive
-git clone git@github.com:Novetta/common --recursive
-git clone git@github.com:Novetta/namegen --recursive
-git clone git@github.com:Novetta/SSE --recursive
-git clone git@github.com:Novetta/Geoserver --recursive
-git clone git@github.com:Novetta/KLE --recursive
-git clone git@github.com:Novetta/ITK --recursive
-git clone git@github.com:Novetta/cesium-drawhelper --recursive
-git clone git@github.com:Novetta/ExecutiveDashboard --recursive
-git clone git@github.com:Novetta/tirs --recursive
-git clone git@github.com:Novetta/goldap --recursive
-git clone git@github.com:Novetta/GoSearchService --recursive
-git clone git@github.com:Novetta/gmf --recursive
-git clone git@github.com:Novetta/WebChimeraPlayer --recursive
-git clone git@github.com:Novetta/perseus --recursive
-git clone git@github.com:Novetta/aide --recursive
-git clone git@github.com:Novetta/gokerb --recursive
-git clone git@github.com:Novetta/gocql --recursive
-git clone git@github.com:Novetta/asn1 --recursive
-git clone git@github.com:Colek42/ext --recursive
+for repo in $NOVA_REPOS
+do
+    echo "Installing repo $repo"
+    cd $NOVAHOME
+    git clone --verbose git@github.com:Novetta/$repo
+    cd $NOVAHOME/${repo}
+    git fetch
+    git pull
+    git submodule update --init --recursive
+done
+echo "done!"
+cd ~    
 
-go get -u -v github.com/nsf/gocode
-go get -u -v github.com/rogpeppe/godef
-go get -u -v github.com/golang/lint/golint
-go get -u -v github.com/lukehoban/go-outline
-go get -u -v sourcegraph.com/sqs/goreturns
-go get -u -v golang.org/x/tools/cmd/gorename
-go get -u -v github.com/tpng/gopkgs
-go get -u -v github.com/newhook/go-symbols
-go get -u -v golang.org/x/tools/cmd/guru
+#--Go Repos--#
+for gorepo in $GOLANG_REPOS
+do
+    echo "Installing repo $gorepo"
+    go get -u -v $gorepo
+done
+echo "done!"
+cd ~
 
-sudo npm install -g jshint
-sudo npm install -g eslint
-sudo npm install -g js-beautify
+#-----Get master of faith/set-----##
+# Go get grabs out of date version #
+cd $GOPATH/src/github.com/fatih
+git checkout master
+git fetch
+git pull
+#---------------------------------##
 
-cd $HOME
+for npmrepo in $NPM_REPOS
+do
+    echo "Installing NPM module $npmrepo"
+    sudo npm install -g $npmrepo
+done
+echo "done"
 
-##Copy Lucene from common
+#--Lucene--#
+echo "Copy Lucene from common"
 sudo cp $NOVAHOME/common/lucene/cassandra-lucene-index-plugin* /usr/share/cassandra/lib/
 sudo chown cassandra:cassandra /usr/share/cassandra/lib/cassandra-lucene-index-plugin*
 sudo systemctl enable cassandra
 
-echo "Installing Sencha"
+#---Sencha---#
+echo "Login and Download Chrome UNTIL DOWNLOAD IS COMPLETED!!!!"
+google-chrome https://support.sencha.com/#download
+cd $HOME/Downloads
+unzip ext*.zip
+extdir=`ls -d */ | grep ext`
+echo "Copying Files to $NOVAHOME/ext......."
+cp -p -r $HOME/Downloads/$extdir $NOVAHOME/ext
+
+echo "Installing Sencha CMD"
 cd $HOME/Downloads
 wget http://cdn.sencha.com/cmd/6.1.2/no-jre/SenchaCmd-$CMDVER-linux-amd64.sh.zip
 unzip SenchaCmd-$CMDVER-linux-amd64.sh.zip
@@ -171,6 +289,4 @@ echo "export PATH=$PATH:/home/cole/bin/Sencha/Cmd" | tee -a $HOME/.env
 source $HOME/.env
 cd $HOME
 
-sudo yum install -y ack tmux
-
-echo "Done!  Please Restart!"
+echo "Done!  Please Restart! and setup your individual packages repos.  Do not forget to create the ext symlink"
