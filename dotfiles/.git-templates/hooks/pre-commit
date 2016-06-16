@@ -6,12 +6,14 @@
 echo "Running JS Beautify, removing new lines at end of file, and making sure js files have 0644 permissions"
 
 BASEDIR=$(git rev-parse --show-toplevel)
+HOOKSDIR=$HOME/.hooks
+
 
 files=$(git diff --cached --name-only --diff-filter=ACM | grep '.js$')
 
 for file in $files; do
   js-beautify -n -r "${BASEDIR}/${file}"
-  eslint -c $HOME/.eslintrc.jso --fix "${BASEDIR}/${file}"
+  eslint -c $HOOKSDIR/.eslintrc.json --fix "${BASEDIR}/${file}"
   chmod 644 "${BASEDIR}/${file}"
   git add "${BASEDIR}/${file}"
 done
