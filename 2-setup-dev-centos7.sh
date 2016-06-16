@@ -18,6 +18,11 @@ sudo yum -y install epel-release
 sudo yum -y install epel-release.noarch
 sudo yum -y update
 sudo yum -y upgrade
+sudo systemctl stop firewalld
+sudo systemctl disable firewalld
+
+sudo touch /etc/profile.d/env.sh
+echo "source /home/cole/.env" | sudo tee -a /etc/profile.d/env.sh
 
 echo "Installing zsh"
 sudo yum -y install zsh
