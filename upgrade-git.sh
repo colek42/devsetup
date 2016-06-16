@@ -18,18 +18,19 @@ if [ ! -d "${GITSRC}/.git" ]; then
   echo "Cant Find Git Repo"
   sudo rm -rf $GITSRC
   cd $HOME
-  git clone git://git.kernel.org/pub/scm/git/git.git
+  git clone git://git.kernel.org/pub/scm/git/git.git $GITSRC
   cd $GITSRC
-fi
-
-if [ -d "${GITSRC}/.git" ]; then
+elif [ -d "${GITSRC}/.git" ]; then
   cd $GITSRC
   echo "Have Git"
+else
+  echo "This Should MNot Happen"
+  exit
 fi
 
 git pull
 make configure
-./configure --prefix=/usr/local
+./configure --prefix=$PREFIX
 sudo make install
 
 NEWVER=`git --version`
